@@ -4,13 +4,13 @@ RUN apk update && apk add --no-cache tzdata
 # Create appuser
 ENV USER=appuser
 ENV UID=10001
-RUN adduser \    
-    -D \    
-    -g "" \    
-    -h "/nonexistent" \    
-    -s "/sbin/nologin" \    
-    -H \    
-    -u "${UID}" \    
+RUN adduser \
+    -D \
+    -g "" \
+    -h "/nonexistent" \
+    -s "/sbin/nologin" \
+    -H \
+    -u "${UID}" \
     "${USER}"
 
 FROM scratch
@@ -22,7 +22,6 @@ COPY --from=builder /etc/group /etc/group
 # Set Time zone
 ENV TZ=America/Santiago
 ENV EXP_PORT=8080
-ENV APPNAME=MYAPP
 # Set Workdir
 WORKDIR /app
 # Set Volume
@@ -31,5 +30,3 @@ VOLUME /app
 EXPOSE $EXP_PORT
 # Use an unprivileged user
 USER appuser:appuser
-# Run the myfinsapi binary
-ENTRYPOINT [$APPNAME]
