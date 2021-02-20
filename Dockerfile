@@ -14,7 +14,7 @@ RUN adduser \
     "${USER}"
 
 FROM scratch
-LABEL version="0.0.1"
+LABEL version="0.0.2"
 # Import from builder
 COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
 COPY --from=builder /etc/passwd /etc/passwd
