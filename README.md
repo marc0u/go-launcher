@@ -1,6 +1,6 @@
 # [go-launcher](https://github.com/marc0u/go-launcher)
 
-A lightwidth image to launch golang apps setting timezone and port to expose.
+A lightwidth image to launch golang apps setting timezone and port to expose. Based on scratch image.
 
 ## Usage
 
@@ -17,8 +17,8 @@ docker run -d \
 
 ## Parameters
 
-|        Parameter         | Function                   |
-| :----------------------: | -------------------------- |
-|        `-v /app`         | Local path for the App.    |
-| `-e TZ=America/Santiago` | Specify a timezone to use. |
-|     `-e EXP_PORT=80`     | Specify port to expose.    |
+|        Parameter         | Function                     |
+| :----------------------: | -----------------------------|
+| `-v $PWD:/app`           | Specify the path for the App.|
+| `-e TZ=America/Santiago` | Specify a timezone to use.   |
+| `-e EXP_PORT=80`         | Specify port to expose.      |
