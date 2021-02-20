@@ -21,12 +21,9 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
 # Set Time zone
 ENV TZ=America/Santiago
-ENV EXP_PORT=8080
 # Set Workdir
 WORKDIR /app
 # Set Volume
 VOLUME /app
-# Expese the 7001 port
-EXPOSE $EXP_PORT
 # Use an unprivileged user
 USER appuser:appuser
