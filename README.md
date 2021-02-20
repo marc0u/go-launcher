@@ -9,7 +9,6 @@ docker run -d \
   --name=myapp \
   -v $PWD:/app \
   -e TZ=America/Santiago \
-  -e EXP_PORT=80 \
   -p 8080:80 \
   --restart=unless-stopped \
   marc0u/go-launcher /app/myapp
@@ -21,4 +20,4 @@ docker run -d \
 | :----------------------: | -----------------------------|
 | `-v $PWD:/app`           | Specify the path for the App.|
 | `-e TZ=America/Santiago` | Specify a timezone to use.   |
-| `-e EXP_PORT=80`         | Specify port to expose.      |
+| `-p EXPOSED:APPPORT`     | Specify the port to expose.  |
