@@ -1,6 +1,6 @@
 FROM alpine:3.7 as builder
 # Install tzdata to add Time Zone
-RUN apk update && apk add --no-cache tzdata
+RUN apk update && apk add --no-cache tzdata ca-certificates 
 # Create appuser
 ENV USER=appuser
 ENV UID=10001
@@ -14,8 +14,9 @@ RUN adduser \
     "${USER}"
 
 FROM scratch
-LABEL version="0.0.2"
+LABEL version="0.0.3"
 # Import from builder
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
